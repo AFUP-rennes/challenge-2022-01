@@ -3,7 +3,7 @@
 
 Le 26 janvier 2022, l'antenne AFUP de Rennes organise son premier challenge de codage.
 
-Pour participer, vous devez envoyer votre code (zip sans répertoire "vendor") avant le 25 janvier à 23h59.
+Pour participer, vous devez envoyer votre code (zip sans répertoire "vendor") avant le 25 janvier à 23h59 à l'adresse rennes(at)afup.org.
 
 En fonction de l'évolution des conditions sanitaires, nous rassemblerons toutes les personnes volontaires pour juger le code produit par les participants (conditions à venir).
 
