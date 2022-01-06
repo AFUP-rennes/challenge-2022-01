@@ -44,14 +44,14 @@ Les batailles entre les codes seront lancées par un agent (voir le script "laun
 
 C'est une communication inter-process où on reçoit via STDIN un message toujours terminé par un "`\n`" (`$request = fgets(STDIN);`) et où l'on répond en faisant un simple `echo` de votre réponse, terminée par un "`\n`" (vous pouvez faire des `fputs(STDOUT, $response)` si vous trouvez ça plus cohérent avec la lecture de la requête).
 
-Un code d'exemple est actuellement proposé sans aucune intelligence pour que vous puissiez comprendre le mécanisme de communication dans "`battle.php`". Le script `launch.php` lance en opposition ce code d'exemple. Vous pouvez le modifiez pour opposer cotre code avec ce code d'exemple ou opposer votre code avec lui-même.
+Un code d'exemple est actuellement proposé sans aucune intelligence pour que vous puissiez comprendre le mécanisme de communication dans "`battle.php`". Le script `launch.php` lance en opposition ce code d'exemple. Vous pouvez le modifiez pour opposer votre code avec ce code d'exemple ou opposer votre code avec lui-même.
 Le code de lancement qui sera utilisé lors de la soirée d'évaluation sera différent pour lancer tous les codes les uns contre les autres dans des répertoires séparés avec analyse de la performance et des métriques sur les vainqueurs.
 
 Quand c'est votre tour de jeu, vous recevez un "`your turn\n`" auquel vous devez répondre une coordonnée de tir sous le format `CL\n` où `C` (colonne) est une lettre allant de "A" à "J" et `L` (ligne) un nombre compris entre 1 et 10. Pour les amateurs de regexp, ça donne : `[A-J]([1-9]|10)`.
 
 Quand vous recevez une coordonnée, vous devrez répondre par l'un des résultats suivants :
 - `miss\n` : quand aucun bateau n'est touché
-- `hit\n` : quand un bateau est touché mais pas coulé
+- `hit\n` : quand un bateau est touché, mais pas coulé
 - `sunk\n` : quand un bateau est coulé
 - `won\n` : quand le dernier bateau a été coulé
 - `error [message d'explication]\n` : quand votre concurrent n'a pas envoyé ce que vous attendiez
@@ -76,4 +76,4 @@ Sur votre grille (virtuelle, jamais affichée) de 10 cases par 10 cases (colonne
 
 Les bateaux peuvent être positionnés horizontalement ou verticalement, mais jamais adjacents (même pas adjacent par la diagonale).
 
-Attention : Quand un bateau est touché ou coulé, le joueur ayant effectué le tir ne rejoue pas (certaines règles le proposent).
+Attention : quand un bateau est touché ou coulé, le joueur ayant effectué le tir ne rejoue pas (certaines règles le proposent).
