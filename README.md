@@ -5,7 +5,7 @@ Le 26 janvier 2022, l'antenne AFUP de Rennes organise son premier challenge de c
 
 Pour participer, vous devez envoyer votre code (zip sans répertoire "vendor") avant le 25 janvier à 23h59 à l'adresse antenne-rennes(at)afup.org.
 
-En fonction de l'évolution des conditions sanitaires, nous rassemblerons toutes les personnes volontaires pour juger le code produit par les participants (conditions à venir).
+Le 26 janvier à 20h30, nous rassemblerons, en visio, des personnes volontaires pour juger le code produit par les participants.
 
 Lors de cette soirée, nous allons, dans un premier temps, faire affronter les codes entre eux pour déterminer lequel a implémenté le meilleur algorithme.
 
@@ -14,7 +14,7 @@ Un test sera même lancé pour voir le comportement de votre code face à des r�
 
 Enfin, collégialement, nous désignerons le meilleur code.
 
-La séance d'analyse sera retransmise en direct (youtube, twitch ou discord, on ne sait pas encore).
+La séance d'analyse sera retransmise en direct sur Youtube à cette adresse [https://youtu.be/ocHZ3CIwuzA]
 
 ## Contraintes
 
