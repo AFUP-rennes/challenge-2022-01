@@ -40,13 +40,9 @@ En d'autres termes, aucun outil externe non déclaré dans le composer.json ne s
 
 ## Exécution du code
 
-Les batailles entre les codes seront lancées par un agent (voir le script "launch.php" disponible dans ce repository Github).
+Les batailles entre les codes seront lancées par l'agent "[launch.php](launch.php)". 
 
 C'est une communication inter-process où on reçoit via STDIN un message toujours terminé par un "`\n`" (`$request = fgets(STDIN);`) et où l'on répond en faisant un simple `echo` de votre réponse, terminée par un "`\n`" (vous pouvez faire des `fputs(STDOUT, $response)` si vous trouvez ça plus cohérent avec la lecture de la requête).
-
-Un code d'exemple est actuellement proposé sans aucune intelligence pour que vous puissiez comprendre le mécanisme de communication dans "`battle.php`". Le script `launch.php` lance en opposition ce code d'exemple. Vous pouvez le modifiez pour opposer votre code avec ce code d'exemple ou opposer votre code avec lui-même.
-Le code de lancement qui sera utilisé lors de la soirée d'évaluation sera différent pour lancer tous les codes les uns contre les autres dans des répertoires séparés avec analyse de la performance et des métriques sur les vainqueurs.
-
 Quand c'est votre tour de jeu, vous recevez un "`your turn\n`" auquel vous devez répondre une coordonnée de tir sous le format `CL\n` où `C` (colonne) est une lettre allant de "A" à "J" et `L` (ligne) un nombre compris entre 1 et 10. Pour les amateurs de regexp, ça donne : `[A-J]([1-9]|10)`.
 
 Quand vous recevez une coordonnée, vous devrez répondre par l'un des résultats suivants :
@@ -62,9 +58,10 @@ Dans tous les cas, quand l'agent voit passer le message "error", la partie est a
 
 De même, dans tous les cas, quand un code reçoit un "won", la partie est arrêtée et le code considéré comme gagnant, même si tous les bateaux ne semblent pourtant pas avoir été tous coulés. Pas la peine d'envoyer un "error", ça ne sera pas pris en compte (profitez de votre chance).
 
-Attention, à chaque tour, vous devez toujours répondre en moins de 5 secondes sinon, vous serez considérés comme perdant (n'oubliez pas que la performance de réponse sera un critère de selection du code gagnant).
+Attention, à chaque tour, vous devez toujours répondre en moins de 5 secondes sinon, vous serez considérés comme perdant.
 
-Lors de la soirée d'évaluation, votre code sera amené à jouer contre lui-même. Lors de ces parties, si un message d'erreur est généré, vous serez automatiquement disqualifié. 
+Le script `launch.php` lance tous les joueurs les uns contre les autres, compte le nombre de parties gagnées et le temps de réponse de code. À nombre de parties gagnées identiques, le temps de réponse sert à départager.
+Chaque partie est lancée 100 fois et on ne considère le gagnant que s'il y à au moins 55 parties gagnées.
 
 ## Règles du jeu
 
