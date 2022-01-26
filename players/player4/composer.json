@@ -1,0 +1,8 @@
+{
+    "name": "crabe/challenge-2022-01",
+    "autoload": {
+      "psr-4": {
+        "Challenge\\": "src/"
+      }
+    }
+}
