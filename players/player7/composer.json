@@ -1,0 +1,21 @@
+{
+    "name": "geffroyr/bataille-navale",
+    "authors": [
+        {
+            "name": "Raphaël Geffroy",
+            "email": "81738559+raphael-geffroy@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.0"
+    },
+    "require": {
+        "beberlei/assert": "^3.3",
+        "myclabs/php-enum": "^1.8"
+    }
+}
