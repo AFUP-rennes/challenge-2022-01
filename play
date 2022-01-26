@@ -28,11 +28,29 @@ if (is_numeric($argv[3] ?? null)) {
     $iterations = (int)$argv[4];
 }
 
+$turns = 0;
+$perf = [
+    $argv[1] => 0,
+    $argv[2] => 0,
+];
+$count = 0;
+
 while ($iterations--) {
     $game = new Game(
         new Player($argv[1], $script1, $debug),
-        new Player($argv[2], $script2, $debug)
+        new Player($argv[2], $script2, $debug),
+        60
     );
     $stats = $game->play();
-    var_dump($stats);
+    $count++;
+    $turns += $stats['turns'];
+    $perf[$argv[1]] += $stats[$argv[1]];
+    $perf[$argv[2]] += $stats[$argv[2]];
+    if (isset($stats['error'])) {
+        echo $stats['error'], "\n";
+    }
 }
+echo "\n";
+echo "turns AVG: ", round($turns / $count / 2), "\n";
+echo "perf ", $argv[1], ": ", round($perf[$argv[1]] / $count * 1000000), "µs\n";
+echo "perf ", $argv[2], ": ", round($perf[$argv[2]] / $count * 1000000), "µs\n";

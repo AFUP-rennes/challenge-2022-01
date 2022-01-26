@@ -5,19 +5,19 @@ namespace Challenge;
 
 final class Game
 {
-    private const GAME_TIMEOUT = 6;
-
     private int $currentPlayer;
+    private int $gameTimeout;
     /** @var Player[] */
     private array $players;
 
-    public function __construct(Player $p1, Player $p2)
+    public function __construct(Player $p1, Player $p2, int $gameTimeout = 6)
     {
         $this->players = [
             0 => $p1,
             1 => $p2,
         ];
         $this->currentPlayer = \random_int(0, 1);
+        $this->gameTimeout = $gameTimeout;
     }
 
     public function play(): array
@@ -26,7 +26,7 @@ final class Game
         $count = 0;
         $startTime = time();
         while ($count++ < 200) {
-            if (time()-$startTime > self::GAME_TIMEOUT) {
+            if (time()-$startTime > $this->gameTimeout) {
                 $result['error'] = $this->getCurrent()->getName().' vs '. $this->getOpponent()->getName().': game timeout';
                 break;
             }
