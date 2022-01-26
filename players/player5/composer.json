@@ -1,0 +1,32 @@
+{
+  "name": "velkuns/afup-challenge-2022-01",
+  "description": "Challenge de codage de l'AFUP Rennes - 2022-01",
+  "type": "project",
+  "minimum-stability": "stable",
+  "license": "MIT",
+
+  "authors": [
+    {
+      "name": "Romain Cottard",
+      "role": "Developer"
+    }
+  ],
+
+  "autoload": {
+    "psr-4": {
+      "Application\\": "./src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Application\\": "./src"
+    }
+  },
+
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*",
+
+    "psr/log": "^1.1"
+  }
+}
