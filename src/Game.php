@@ -1,11 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Challenge;
 
 final class Game
 {
+    private const GAME_TIMEOUT = 6;
+
     private int $currentPlayer;
     /** @var Player[] */
     private array $players;
@@ -23,7 +24,12 @@ final class Game
     {
         $result = [];
         $count = 0;
+        $startTime = time();
         while ($count++ < 200) {
+            if (time()-$startTime > self::GAME_TIMEOUT) {
+                $result['error'] = $this->getCurrent()->getName().' vs '. $this->getOpponent()->getName().': game timeout';
+                break;
+            }
             $turn = $this->turn();
             if ($turn === 'won') {
                 $result['winner'] = $this->getOpponent()->getName();

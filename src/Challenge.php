@@ -1,9 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Challenge;
-
 final class Challenge
 {
     private array $players;
@@ -23,9 +21,6 @@ final class Challenge
             }
         }
         $this->errors = [];
-        if (\count($this->players) < 2) {
-            throw new \RuntimeException('You need at least 2 players');
-        }
     }
 
     public function start(callable $progression): void
@@ -35,6 +30,7 @@ final class Challenge
         $len = count($this->players);
 
         $progressLen = (($len * $len) - $len) / 2 * $this->nbIterations;
+        echo "\nWill play {$progressLen} games\n";
         $progressCount = 0;
 
         for ($i = 0; $i < $len; $i++) {
@@ -101,6 +97,10 @@ final class Challenge
             if ($b['won'] !== $a['won']) {
                 return $b['won'] <=> $a['won'];
             }
+
+            if ($a['count'] === 0 || $b['count'] === 0) {
+                return -1;
+            }
             return ($a['timeSum'] / $a['count']) <=> ($b['timeSum'] / $b['count']);
         });
 
@@ -112,11 +112,12 @@ final class Challenge
             $result[$position] = [
                 'name' => $name,
                 'won' => $winner['won'],
-                'perf' => round($winner['timeSum'] / $winner['count'] * 1000000),
+                'perf' => $winner['count'] > 0 ? round($winner['timeSum'] / $winner['count'] * 1000000) : 1000000,
                 'errors' => $this->errors,
             ];
         }
 
         return $result;
     }
+
 }

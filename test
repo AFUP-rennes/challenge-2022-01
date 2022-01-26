@@ -1,5 +1,5 @@
+#!/bin/php
 <?php
-
 declare(strict_types=1);
 
 namespace Challenge;
@@ -8,13 +8,9 @@ require 'src/Player.php';
 
 $players = [];
 foreach (glob(__DIR__ . '/players/*') as $file) {
-    if (file_exists($file . '/battle.php') && preg_match('`/_[^/]+`', $file) === 0) {
+    if (file_exists($file . '/battle.php')) {
         $players[] = $file . '/battle.php';
     }
-}
-
-if ($players === []) {
-    die("No player found\n");
 }
 
 function test(array $players, string $what, string ...$request)

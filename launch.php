@@ -1,22 +1,19 @@
 <?php
-
 declare(strict_types=1);
-
 namespace Challenge;
 
 require 'src/Player.php';
 require 'src/Game.php';
 require 'src/Challenge.php';
 
-try {
-    $challenge = new Challenge(100, 55, false);
-} catch (\RuntimeException $exception) {
-    die($exception->getMessage()."\n");
-}
-$challenge->start(function (string $player1, string $player2, int $progression) {
+$startTime = time();
+
+$challenge = new Challenge(100, 55, false);
+$challenge->start(function(string $player1, string $player2, int $progression) {
     echo "Player {$player1} vs {$player2}: {$progression}%\r";
 });
 
+echo "\n\nIt took ", (time()-$startTime), ' seconds to play all games.';
 echo "\n\n--------- Result ------------\n";
 
 $errors = [];

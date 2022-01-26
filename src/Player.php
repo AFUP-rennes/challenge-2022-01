@@ -1,7 +1,5 @@
 <?php
-
 declare(strict_types=1);
-
 namespace Challenge;
 
 final class Player
@@ -107,6 +105,9 @@ final class Player
             fclose($this->pipes[0]);
             fclose($this->pipes[1]);
             fclose($this->pipes[2]);
+            if (proc_get_status($this->process)['running']) {
+                proc_terminate($this->process);
+            }
             proc_close($this->process);
         } catch (\Throwable) {
         }

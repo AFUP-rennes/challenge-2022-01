@@ -1,0 +1,38 @@
+#!/bin/php
+<?php
+declare(strict_types=1);
+
+namespace Challenge;
+
+require 'src/Player.php';
+require 'src/Game.php';
+
+if (!isset($argv[2])) {
+    die("usage: play.php <player1> <player2> [--debug]\n");
+}
+$script1 = 'players/'.$argv[1].'/battle.php';
+$script2 = 'players/'.$argv[2].'/battle.php';
+
+if (!file_exists($script1)) {
+    die("Could not found {$script1}\n");
+}
+if (!file_exists($script2)) {
+    die("Could not found {$script1}\n");
+}
+
+$debug = \in_array('--debug', $argv, true);
+$iterations = 1;
+if (is_numeric($argv[3] ?? null)) {
+    $iterations = (int)$argv[3];
+} elseif (is_numeric($a[4] ?? null)) {
+    $iterations = (int)$argv[4];
+}
+
+while ($iterations--) {
+    $game = new Game(
+        new Player($argv[1], $script1, $debug),
+        new Player($argv[2], $script2, $debug)
+    );
+    $stats = $game->play();
+    var_dump($stats);
+}
