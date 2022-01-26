@@ -1,0 +1,25 @@
+{
+    "name": "fbouchery/player1",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fbouchery",
+            "email": "frederic.bouchery@klaxoon.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "config": {
+        "platform": {
+            "php": "8.0"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests/"
+    }
+}
