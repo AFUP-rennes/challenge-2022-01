@@ -1,0 +1,23 @@
+{
+    "name": "ouebsson/battleship",
+    "description": "Participation de Ouebsson au coding challenge AFUP-Rennes 2022-01",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Ouebsson\\BattleShip\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "10.0.x-dev"
+    },
+    "config": {
+        "platform": {
+            "php": "8.0.13"
+        }
+    },
+    "require": {
+        "loophp/collection": "dev-master"
+    }
+}
